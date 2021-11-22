@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "KZ8iVwFDeKi0lhrQdXOafKaXzaEOsIP+CrKjXdBwEnMNbhDI9v/7Lfs7PCjJhd72dgZKbhBxdoluQYQVKhpP6Q==",
+  "success": true,
+  "projectFilePath": "/home/renzo/RiderProjects/QWERTY/QWERTY/QWERTY.csproj",
+  "expectedPackageFiles": [
+    "/home/renzo/.nuget/packages/microsoft.extensions.configuration.abstractions/5.0.0/microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
+    "/home/renzo/.nuget/packages/microsoft.extensions.dependencyinjection/5.0.0/microsoft.extensions.dependencyinjection.5.0.0.nupkg.sha512",
+    "/home/renzo/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/5.0.0/microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "/home/renzo/.nuget/packages/microsoft.extensions.logging/5.0.0/microsoft.extensions.logging.5.0.0.nupkg.sha512",
+    "/home/renzo/.nuget/packages/microsoft.extensions.logging.abstractions/5.0.0/microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
+    "/home/renzo/.nuget/packages/microsoft.extensions.options/5.0.0/microsoft.extensions.options.5.0.0.nupkg.sha512",
+    "/home/renzo/.nuget/packages/microsoft.extensions.primitives/5.0.0/microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "/home/renzo/.nuget/packages/nlog/5.0.0-preview.3/nlog.5.0.0-preview.3.nupkg.sha512",
+    "/home/renzo/.nuget/packages/nlog.extensions.logging/5.0.0-preview.3/nlog.extensions.logging.5.0.0-preview.3.nupkg.sha512",
+    "/home/renzo/.nuget/packages/opentk.core/5.0.0-pre.6/opentk.core.5.0.0-pre.6.nupkg.sha512",
+    "/home/renzo/.nuget/packages/opentk.graphics/5.0.0-pre.6/opentk.graphics.5.0.0-pre.6.nupkg.sha512",
+    "/home/renzo/.nuget/packages/opentk.mathematics/5.0.0-pre.6/opentk.mathematics.5.0.0-pre.6.nupkg.sha512"
+  ],
+  "logs": []
+}

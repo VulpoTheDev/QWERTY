@@ -1,0 +1,15 @@
+/home/renzo/RiderProjects/QWERTY/QWERTY/bin/Debug/net6.0/QWERTY
+/home/renzo/RiderProjects/QWERTY/QWERTY/bin/Debug/net6.0/QWERTY.deps.json
+/home/renzo/RiderProjects/QWERTY/QWERTY/bin/Debug/net6.0/QWERTY.runtimeconfig.json
+/home/renzo/RiderProjects/QWERTY/QWERTY/bin/Debug/net6.0/QWERTY.dll
+/home/renzo/RiderProjects/QWERTY/QWERTY/bin/Debug/net6.0/ref/QWERTY.dll
+/home/renzo/RiderProjects/QWERTY/QWERTY/bin/Debug/net6.0/QWERTY.pdb
+/home/renzo/RiderProjects/QWERTY/QWERTY/obj/Debug/net6.0/QWERTY.csproj.AssemblyReference.cache
+/home/renzo/RiderProjects/QWERTY/QWERTY/obj/Debug/net6.0/QWERTY.GeneratedMSBuildEditorConfig.editorconfig
+/home/renzo/RiderProjects/QWERTY/QWERTY/obj/Debug/net6.0/QWERTY.AssemblyInfoInputs.cache
+/home/renzo/RiderProjects/QWERTY/QWERTY/obj/Debug/net6.0/QWERTY.AssemblyInfo.cs
+/home/renzo/RiderProjects/QWERTY/QWERTY/obj/Debug/net6.0/QWERTY.csproj.CoreCompileInputs.cache
+/home/renzo/RiderProjects/QWERTY/QWERTY/obj/Debug/net6.0/QWERTY.dll
+/home/renzo/RiderProjects/QWERTY/QWERTY/obj/Debug/net6.0/ref/QWERTY.dll
+/home/renzo/RiderProjects/QWERTY/QWERTY/obj/Debug/net6.0/QWERTY.pdb
+/home/renzo/RiderProjects/QWERTY/QWERTY/obj/Debug/net6.0/QWERTY.genruntimeconfig.cache
