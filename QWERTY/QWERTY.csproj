@@ -7,12 +7,25 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+
     <ItemGroup>
+      <PackageReference Include="JetBrains.Annotations" Version="2021.3.0" />
       <PackageReference Include="NLog" Version="5.0.0-preview.3" />
       <PackageReference Include="NLog.Extensions.Logging" Version="5.0.0-preview.3" />
       <PackageReference Include="OpenTK.Core" Version="5.0.0-pre.6" />
       <PackageReference Include="OpenTK.Graphics" Version="5.0.0-pre.6" />
       <PackageReference Include="OpenTK.Mathematics" Version="5.0.0-pre.6" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Util\NativeMessageBox.cs" />
     </ItemGroup>
 
 </Project>
