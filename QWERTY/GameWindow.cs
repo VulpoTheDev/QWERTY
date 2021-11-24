@@ -53,10 +53,11 @@ public unsafe class GameWindow : IDisposable {
         GL.Viewport(0, 0, vpWidth, vpHeight);
 
         GL.ClearColor(1F,.54F, 0F, 1F);
-
+        // As the game is running...
         while(_isRunning) {
+            // Make the current event have a Event type?
             SDL.Event currentEvent;
-
+            // aS 
             while(SDL.PollEvent(&currentEvent) > 0) {
                 switch(currentEvent.Type) {
                     case SDL.EventType.Quit:

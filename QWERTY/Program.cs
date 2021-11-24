@@ -19,11 +19,16 @@ internal static unsafe class Program {
         // Create the game's logger
         Logger = LogManager.GetLogger("QWERTY");
 
+        // 1 = True; Foworce~ Enables Double Buffer
         SDL.GlSetAttribute(SDL.GlAttribute.DoubleBuffer, 1);
+        
+        // Force each color channel to be 8 bits so we have a 32 bit colors
         SDL.GlSetAttribute(SDL.GlAttribute.RedSize, 8);
         SDL.GlSetAttribute(SDL.GlAttribute.GreenSize, 8);
         SDL.GlSetAttribute(SDL.GlAttribute.BlueSize, 8);
         SDL.GlSetAttribute(SDL.GlAttribute.AlphaSize, 8);
+        
+        // OPENGL Version (OpenGL 4.6 Core)
         SDL.GlSetAttribute(SDL.GlAttribute.ContextProfileMask, (int)SDL.GlProfile.Core);
         SDL.GlSetAttribute(SDL.GlAttribute.ContextMajorVersion, 4);
         SDL.GlSetAttribute(SDL.GlAttribute.ContextMinorVersion, 6);
