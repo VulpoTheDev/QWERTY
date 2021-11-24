@@ -1,3 +1,4 @@
+using System.Drawing;
 using System.Text;
 using OpenTK;
 using OpenTK.Graphics;
@@ -18,6 +19,8 @@ public unsafe class GameWindow : IDisposable {
     private FrameTimer _frameTimer = new();
     // A pointer to the current OpenGL context
     private void* _glContext;
+    // A test texture
+    private SimpleTexture _texture;
 
     public GameWindow() {
         // Allocate stack memory for the given string, and copy the contents of the given string into said memory
@@ -36,6 +39,8 @@ public unsafe class GameWindow : IDisposable {
         SDL.Validate(_glContext != null);
         // Load the OpenGL bindings from the current GL context, making all GL functions usable
         GLLoader.LoadBindings(new BindingsContextImpl());
+
+        _texture = new SimpleTexture(new Size(32, 32));
     }
 
     // Method that runs when the Game Window gets Garbage Collected
@@ -52,7 +57,7 @@ public unsafe class GameWindow : IDisposable {
         SDL.GlGetDrawableSize(_handle, &vpWidth, &vpHeight);
         GL.Viewport(0, 0, vpWidth, vpHeight);
 
-        GL.ClearColor(1F,.54F, 0F, 1F);
+        GL.ClearColor(0F, 0F, 0F, 1F);
         // As the game is running...
         while(_isRunning) {
             // Make the current event have a Event type?
@@ -86,6 +91,7 @@ public unsafe class GameWindow : IDisposable {
     public void Dispose() {
         // Guard to make sure the Window doesn't kill itself.. again
         if(_isDisposed) return;
+        _texture.Dispose();
         SDL.GlDeleteContext(_glContext); // Destroy the window's OpenGL context
         SDL.DestroyWindow(_handle); // Destroy the native window instance to free memory
         _isDisposed = true;
