@@ -60,11 +60,15 @@ public unsafe class GameWindow : IDisposable {
         GL.ClearColor(0F, 0F, 0F, 1F);
         // As the game is running...
         while(_isRunning) {
-            // Make the current event have a Event type?
+            // We define an unpopulated event on the stack..
             SDL.Event currentEvent;
-            // aS 
+            // While we have events to process..
+            // (..take the address of currentEvent and populate it with data)
             while(SDL.PollEvent(&currentEvent) > 0) {
+                // Switch on the event type of the current event being processed
                 switch(currentEvent.Type) {
+                    // If we have a quit event, break the outer most loop by
+                    // setting _isRunning to false.
                     case SDL.EventType.Quit:
                         _isRunning = false;
                         break;

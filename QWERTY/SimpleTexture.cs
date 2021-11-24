@@ -13,7 +13,7 @@ public unsafe struct SimpleTexture : ITexture {
         Handle = GL.GenTexture();
         if (Handle == TextureHandle.Zero) throw new("Could not allocate texture");
     }
-    
+
     private void Init()
     {
         // Binds this texture as the current texture in GL
