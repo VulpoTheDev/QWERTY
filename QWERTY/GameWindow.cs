@@ -50,11 +50,15 @@ public unsafe class GameWindow : IDisposable {
     
     // Called to make the window visible after initializing it's internals
     public void Show() {
+        // Set the running state to true before we enter our outer main loop
         _isRunning = true;
-
+        // Define a width and height variable for the area of the window
+        // we want to render to, that is the entire area of the window minus
+        // title bar and border(s).
         int vpWidth;
         int vpHeight;
         SDL.GlGetDrawableSize(_handle, &vpWidth, &vpHeight);
+        // Set up the OpenGL viewport with the size we just retrieved.
         GL.Viewport(0, 0, vpWidth, vpHeight);
 
         GL.ClearColor(0F, 0F, 0F, 1F);
@@ -75,20 +79,25 @@ public unsafe class GameWindow : IDisposable {
                 }
             }
 
+            // Let the frame timer know we began rendering a new frame
             _frameTimer.StartFrame();
+            // Clear the back buffer to the clear color
             GL.Clear(ClearBufferMask.ColorBufferBit);
-
+            // Render the actual scene
+            Render(_frameTimer.DeltaTime);
+            // Define a display mode on the stack..
             SDL.DisplayMode displayMode;
+            // ..and populate it with data frm the current window's display mode.
             SDL.Validate(SDL.GetWindowDisplayMode(_handle, &displayMode));
+            // Let the frame timer know we're done rendering the new frame.
             _frameTimer.EndFrame(displayMode.RefreshRate);
-
-            fixed(byte* pTitle = Encoding.UTF8.GetBytes($"QWERTY [{_frameTimer.DeltaTime * 1000F}FPS]")) {
-                SDL.SetWindowTitle(_handle, pTitle);
-            }
-
             // Swap back- and front-buffer, so we get to see the next frame!
             SDL.GlSwapWindow(_handle);
         }
+    }
+
+    private void Render(float deltaTime) {
+
     }
 
     // Runs when the Program's Main Function gets terminated
