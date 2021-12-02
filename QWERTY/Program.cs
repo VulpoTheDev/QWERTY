@@ -19,7 +19,7 @@ internal static unsafe class Program {
         // Create the game's logger
         Logger = LogManager.GetLogger("QWERTY");
 
-        // 1 = True; Foworce~ Enables Double Buffer
+        // 1 = True; Force Enables Double Buffer
         SDL.GlSetAttribute(SDL.GlAttribute.DoubleBuffer, 1);
         
         // Force each color channel to be 8 bits so we have a 32 bit colors

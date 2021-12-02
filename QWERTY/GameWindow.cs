@@ -1,3 +1,4 @@
+using System.Drawing;
 using System.Text;
 using OpenTK;
 using OpenTK.Graphics;
@@ -18,6 +19,8 @@ public unsafe class GameWindow : IDisposable {
     private FrameTimer _frameTimer = new();
     // A pointer to the current OpenGL context
     private void* _glContext;
+    // A test texture
+    private SimpleTexture _texture;
 
     public GameWindow() {
         // Allocate stack memory for the given string, and copy the contents of the given string into said memory
@@ -36,6 +39,8 @@ public unsafe class GameWindow : IDisposable {
         SDL.Validate(_glContext != null);
         // Load the OpenGL bindings from the current GL context, making all GL functions usable
         GLLoader.LoadBindings(new BindingsContextImpl());
+
+        _texture = new SimpleTexture(new Size(32, 32));
     }
 
     // Method that runs when the Game Window gets Garbage Collected
@@ -45,47 +50,61 @@ public unsafe class GameWindow : IDisposable {
     
     // Called to make the window visible after initializing it's internals
     public void Show() {
+        // Set the running state to true before we enter our outer main loop
         _isRunning = true;
-
+        // Define a width and height variable for the area of the window
+        // we want to render to, that is the entire area of the window minus
+        // title bar and border(s).
         int vpWidth;
         int vpHeight;
         SDL.GlGetDrawableSize(_handle, &vpWidth, &vpHeight);
+        // Set up the OpenGL viewport with the size we just retrieved.
         GL.Viewport(0, 0, vpWidth, vpHeight);
 
-        GL.ClearColor(1F,.54F, 0F, 1F);
+        GL.ClearColor(0F, 0F, 0F, 1F);
         // As the game is running...
         while(_isRunning) {
-            // Make the current event have a Event type?
+            // We define an unpopulated event on the stack..
             SDL.Event currentEvent;
-            // aS 
+            // While we have events to process..
+            // (..take the address of currentEvent and populate it with data)
             while(SDL.PollEvent(&currentEvent) > 0) {
+                // Switch on the event type of the current event being processed
                 switch(currentEvent.Type) {
+                    // If we have a quit event, break the outer most loop by
+                    // setting _isRunning to false.
                     case SDL.EventType.Quit:
                         _isRunning = false;
                         break;
                 }
             }
 
+            // Let the frame timer know we began rendering a new frame
             _frameTimer.StartFrame();
+            // Clear the back buffer to the clear color
             GL.Clear(ClearBufferMask.ColorBufferBit);
-
+            // Render the actual scene
+            Render(_frameTimer.DeltaTime);
+            // Define a display mode on the stack..
             SDL.DisplayMode displayMode;
+            // ..and populate it with data frm the current window's display mode.
             SDL.Validate(SDL.GetWindowDisplayMode(_handle, &displayMode));
+            // Let the frame timer know we're done rendering the new frame.
             _frameTimer.EndFrame(displayMode.RefreshRate);
-
-            fixed(byte* pTitle = Encoding.UTF8.GetBytes($"QWERTY [{_frameTimer.DeltaTime * 1000F}FPS]")) {
-                SDL.SetWindowTitle(_handle, pTitle);
-            }
-
             // Swap back- and front-buffer, so we get to see the next frame!
             SDL.GlSwapWindow(_handle);
         }
+    }
+
+    private void Render(float deltaTime) {
+
     }
 
     // Runs when the Program's Main Function gets terminated
     public void Dispose() {
         // Guard to make sure the Window doesn't kill itself.. again
         if(_isDisposed) return;
+        _texture.Dispose();
         SDL.GlDeleteContext(_glContext); // Destroy the window's OpenGL context
         SDL.DestroyWindow(_handle); // Destroy the native window instance to free memory
         _isDisposed = true;
